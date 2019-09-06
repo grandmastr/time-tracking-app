@@ -24,27 +24,6 @@ export default function App() {
           elapsed={"3890985"}
           editFormOpen
         />
-        <EditableTimer
-          id={2}
-          title={"Bake"}
-          project={"Chores"}
-          elapsed={"3890985"}
-          editFormOpen
-        />
-        <EditableTimer
-          id={3}
-          title={"Bake"}
-          project={"Chores"}
-          elapsed={"3890985"}
-          editFormOpen
-        />
-        <EditableTimer
-          id={4}
-          title={"Bake"}
-          project={"Chores"}
-          elapsed={"3890985"}
-          editFormOpen
-        />
       </ScrollView>
     </View>
   )
@@ -53,24 +32,23 @@ export default function App() {
 const styles = StyleSheet.create({
   appContainer: {
     flex: 1,
-    backgroundColor: '#242d2e',
   },
   titleContainer: {
     paddingTop: 35,
     paddingBottom: 15,
-    marginBottom: 20,
+    marginBottom: 10,
     borderBottomWidth: 3,
-    borderBottomColor: '#ffcf43',
+    borderBottomColor: '#D6D7DA',
     borderBottomLeftRadius: 3,
     borderBottomRightRadius: 3
   },
   title: {
-    color: '#ffffff',
+    color: '#000000',
     fontSize: 18,
     textAlign: 'center',
     fontWeight: 'bold'
   },
   timerList: {
-    paddingBottom: 15
+    padding: 1
   }
 });

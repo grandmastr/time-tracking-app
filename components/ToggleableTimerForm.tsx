@@ -5,12 +5,12 @@ export default function ToggleableTimerForm({isOpen}) {
   return (
     <View>
       {!isOpen
-        ? (
-        
-        )
-        : (
-        
-        )
+        // ? (
+        //
+        // )
+        // : (
+        //
+        // )
       }
     </View>
   )

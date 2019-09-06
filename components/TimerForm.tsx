@@ -1,8 +1,21 @@
 // dependencies
 import React from 'react';
 import { TextInput, Text, View, StyleSheet } from "react-native";
+import PropTypes from 'prop-types';
 
+// components
 import TimerButton from './TimerButton';
+
+TimerForm.propTypes = {
+  id: PropTypes.string,
+  title: PropTypes.string,
+  project: PropTypes.string
+};
+
+TimerForm.defaultProps = {
+  title: "",
+  project: ""
+};
 
 export default function TimerForm({id, title, project}) {
   const submitText:string = id ? 'Update' : 'Create';

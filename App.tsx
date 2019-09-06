@@ -15,8 +15,15 @@ export default function App() {
           Timers
         </Text>
       </View>
+      <ToggleableTimerForm isOpen={false}/>
       <ScrollView style={styles.timerList}>
-        <ToggleableTimerForm isOpen={false}/>
+        <EditableTimer
+          id={1}
+          title={"Learn Archery"}
+          project={"Archery"}
+          elapsed={"3890985"}
+          isRunning
+        />
         <EditableTimer
           id={1}
           title={"Bake squash"}

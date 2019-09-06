@@ -4,7 +4,7 @@ import { View, StyleSheet } from "react-native";
 
 // components
 import TimerForm from "./TimerForm";
-import TimerButton from "./TimerButton"
+import TimerButton from "./TimerButton";
 
 export default function ToggleableTimerForm({isOpen}) {
   return (

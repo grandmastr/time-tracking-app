@@ -1,5 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Text, StyleSheet, TouchableOpacity} from "react-native";
+
+TimerButton.propTypes = {
+  small: PropTypes.bool,
+  color: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  onPress: PropTypes.func
+};
 
 export default function TimerButton({small, color, title, onPress}) {
   return (

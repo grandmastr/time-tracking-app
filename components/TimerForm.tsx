@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import TimerButton from './TimerButton';
 
 TimerForm.propTypes = {
-  id: PropTypes.string,
+  id: PropTypes.number,
   title: PropTypes.string,
   project: PropTypes.string
 };

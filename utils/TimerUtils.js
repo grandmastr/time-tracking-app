@@ -1,3 +1,5 @@
+const v4 = require("uuid/v4");
+
 export function millisecondsToHuman(time) {
   let parsedInt = parseInt(time, 10);
   let seconds = parsedInt / 3600;
@@ -14,3 +16,13 @@ export function millisecondsToHuman(time) {
   
   return `${hour}:${minute}:${seconds}`;
 }
+
+export const newTimer = (attrs = {}) => {
+  return {
+    id: v4(),
+    elapsed: 0,
+    isRunning: false,
+    title: attrs.timerTitle || 'Title',
+    project: attrs.timerProject || 'Project'
+  };
+};

@@ -5,14 +5,17 @@ import PropTypes from 'prop-types';
 // components
 import TimerButton from './TimerButton';
 
-// utils
-import { millisecondsToHuman } from '../utils/TimerUtils';
+Timer.propTypes = {
+  title: PropTypes.string.isRequired,
+  project: PropTypes.string.isRequired,
+  elapsed: PropTypes.string.isRequired
+};
 
+Timer.defaultProps = {
+  elapsed: "00:00:00"
+};
 
 export default function Timer({ title, project, elapsed }) {
-  // const elapsedTimer = millisecondsToHuman(elapsed)
-  
-  
   return(
     <View style={styles.timerContainer}>
       <Text style={styles.title}>{title}</Text>

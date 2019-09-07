@@ -1,5 +1,5 @@
 // dependencies
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TextInput, Text, View, StyleSheet } from "react-native";
 import PropTypes from 'prop-types';
 
@@ -7,9 +7,11 @@ import PropTypes from 'prop-types';
 import TimerButton from './TimerButton';
 
 TimerForm.propTypes = {
-  id: PropTypes.number,
+  id: PropTypes.string,
   title: PropTypes.string,
-  project: PropTypes.string
+  project: PropTypes.string,
+  onFormSubmit: PropTypes.func.isRequired,
+  onFormClose: PropTypes.func.isRequired
 };
 
 TimerForm.defaultProps = {
@@ -17,7 +19,7 @@ TimerForm.defaultProps = {
   project: ""
 };
 
-export default function TimerForm({id, title, project}) {
+export default function TimerForm({id, title, project, onFormSubmit, onFormClose}) {
   const submitText:string = id ? 'Update' : 'Create';
   
   const [timerTitle, setTimerTitle] = useState(title);
@@ -38,7 +40,7 @@ export default function TimerForm({id, title, project}) {
         </View>
       </View>
       <View style={styles.attributesContainer}>
-        <Text style={styles.textInputTitle}>Title</Text>
+        <Text style={styles.textInputTitle}>Project</Text>
         <View style={styles.textInputContainer}>
           <TextInput
             style={styles.textInput}
@@ -50,11 +52,15 @@ export default function TimerForm({id, title, project}) {
         </View>
       </View>
       <View style={styles.buttonGroup}>
-        <TimerButton small color="#21BA45" title={submitText}/>
-        <TimerButton small color="#DB2828" title="Cancel"/>
+        <TimerButton small color="#21BA45" title={submitText} onPress={
+          () => onFormSubmit({id, timerTitle, timerProject})
+        }/>
+        <TimerButton small color="#DB2828" title="Cancel" onPress={
+          () => onFormClose()
+        }/>
       </View>
     </View>
-  )
+  );
 };
 
 const styles = StyleSheet.create({

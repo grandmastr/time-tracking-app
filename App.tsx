@@ -1,12 +1,20 @@
 // Dependencies
-import React from 'react';
-import { View, ScrollView, Text, StyleSheet } from "react-native";
+import React, { useState } from 'react';
+import { View, ScrollView, Text, StyleSheet } from 'react-native';
+import { v4 as uuid } from 'uuid';
 
 // Components
 import EditableTimer from './components/EditableTimer';
 import ToggleableTimerForm from './components/ToggleableTimerForm';
 
+// utilities
+import { newTimer } from './utils/TimerUtils';
+
 export default function App() {
+  const [timers, setTimers] = useState(
+    []
+  );
+  
   return (
     <View style={styles.appContainer}>
       <View style={styles.titleContainer}>
@@ -15,21 +23,33 @@ export default function App() {
         </Text>
       </View>
       <ScrollView style={styles.timerList}>
-        <ToggleableTimerForm isOpen={false}/>
-        <EditableTimer
-          id={1}
-          title={"Learn Archery"}
-          project={"Archery"}
-          elapsed={123456}
-          isRunning
-        />
-        <EditableTimer
-          id={2}
-          title={"Bake squash"}
-          project={"Kitchen Chores"}
-          isRunning
-          elapsed={363504}
-        />
+        <ToggleableTimerForm
+          isOpen={false}
+          addTimerEvent={
+            timer => setTimers([newTimer(timer), ...timers])
+          }/>
+        {
+          timers.length > 0
+            ? timers.map(({id, title, project, elapsed, isRunning}) => (
+              <EditableTimer
+                key={id}
+                project={project}
+                id={id}
+                title={title}
+                isRunning={isRunning}
+                elapsed={elapsed}
+                onFormSubmit={() => console.log("Super")}
+                onTimerRemove={() => console.log("James Olsen")}
+              />
+            ))
+            : (
+              <View>
+                <Text style={styles.emptyTimer}>
+                  You have no timer set at this time <Text style={{ fontSize: 12 }}>(Get it?)</Text>
+                </Text>
+              </View>
+            )
+        }
       </ScrollView>
     </View>
   )
@@ -56,5 +76,11 @@ const styles = StyleSheet.create({
   },
   timerList: {
     padding: 1
+  },
+  emptyTimer: {
+    textAlign: 'center',
+    fontSize: 15,
+    fontWeight: 'bold',
+    marginVertical: '50%'
   }
 });

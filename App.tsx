@@ -58,6 +58,7 @@ export default function App() {
 const styles = StyleSheet.create({
   appContainer: {
     flex: 1,
+    backgroundColor: '#001119'
   },
   titleContainer: {
     paddingTop: 35,
@@ -69,7 +70,8 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 3
   },
   title: {
-    color: '#000000',
+    // color: '#000000',
+    color: '#fff',
     fontSize: 18,
     textAlign: 'center',
     fontWeight: 'bold'
@@ -81,6 +83,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 15,
     fontWeight: 'bold',
-    marginVertical: '50%'
+    marginVertical: '50%',
+    color: '#ffffff'
   }
 });

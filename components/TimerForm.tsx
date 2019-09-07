@@ -79,10 +79,11 @@ const styles = StyleSheet.create({
   textInputTitle: {
     fontSize: 14,
     fontWeight: 'bold',
-    marginBottom: 5
+    marginBottom: 5,
+    color: '#fff'
   },
   textInputContainer: {
-    borderWidth: 1,
+    borderWidth: 2,
     borderColor: '#D6D7DA',
     borderRadius: 3,
     paddingLeft: 5,
@@ -94,7 +95,8 @@ const styles = StyleSheet.create({
   textInput: {
     height: 30,
     padding: 5,
-    fontSize: 12
+    fontSize: 12,
+    color: '#ffffff'
   },
   buttonGroup: {
     flexDirection: 'row',

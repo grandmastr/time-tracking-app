@@ -24,7 +24,7 @@ export default function ToggleableTimerForm({isOpen, addTimerEvent}) {
     <View style={[styles.container, !fillForm && styles.buttonPadding]}>
       {fillForm
         ? <TimerForm onFormClose={handleFormClose} onFormSubmit={handleFormSubmit}/>
-        : <TimerButton title="+" color="black" onPress={
+        : <TimerButton title="+" color="white" onPress={
           () => setFillForm(!fillForm)
         }/>}
     </View>

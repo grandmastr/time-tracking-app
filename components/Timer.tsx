@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet } from "react-native";
+import PropTypes from 'prop-types';
 
 // components
 import TimerButton from './TimerButton';
@@ -7,18 +8,21 @@ import TimerButton from './TimerButton';
 // utils
 import { millisecondsToHuman } from '../utils/TimerUtils';
 
+
 export default function Timer({ title, project, elapsed }) {
-  const elapsedString:string = millisecondsToHuman(elapsed);
+  // const elapsedTimer = millisecondsToHuman(elapsed)
+  
   
   return(
     <View style={styles.timerContainer}>
       <Text style={styles.title}>{title}</Text>
       <Text>{project}</Text>
-      <Text style={styles.elapsedTime}>{elapsedString}</Text>
+      <Text style={styles.elapsedTime}>{elapsed}</Text>
       <View style={styles.buttonGroup}>
         <TimerButton color="blue" small title="Edit"/>
         <TimerButton color="red" small title="Remove"/>
       </View>
+      
       <TimerButton color="#21BA45" title="Start"/>
     </View>
   )

@@ -1,5 +1,5 @@
 // dependencies
-import React from 'react';
+import React, { useState } from 'react';
 import { TextInput, Text, View, StyleSheet } from "react-native";
 import PropTypes from 'prop-types';
 
@@ -20,14 +20,20 @@ TimerForm.defaultProps = {
 export default function TimerForm({id, title, project}) {
   const submitText:string = id ? 'Update' : 'Create';
   
+  const [timerTitle, setTimerTitle] = useState(title);
+  const [timerProject, setTimerProject] = useState(project);
+  
   return (
     <View style={styles.formContainer}>
       <View style={styles.attributesContainer}>
         <Text style={styles.textInputTitle}>Title</Text>
         <View style={styles.textInputContainer}>
-          <TextInput style={styles.textInput}
-                     underlineColorAndroid="transparent"
-                     defaultValue={title}
+          <TextInput
+            style={styles.textInput}
+            underlineColorAndroid="transparent"
+            defaultValue={title}
+            value={timerTitle}
+            onChangeText={text => setTimerTitle(text)}
           />
         </View>
       </View>
@@ -38,6 +44,8 @@ export default function TimerForm({id, title, project}) {
             style={styles.textInput}
             underlineColorAndroid="transparent"
             defaultValue={project}
+            value={timerProject}
+            onChangeText={text => setTimerProject(text)}
           />
         </View>
       </View>

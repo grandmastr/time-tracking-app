@@ -7,7 +7,6 @@ import EditableTimer from './components/EditableTimer';
 import ToggleableTimerForm from './components/ToggleableTimerForm';
 
 export default function App() {
-  
   return (
     <View style={styles.appContainer}>
       <View style={styles.titleContainer}>
@@ -15,21 +14,21 @@ export default function App() {
           Timers
         </Text>
       </View>
-      <ToggleableTimerForm isOpen={false}/>
       <ScrollView style={styles.timerList}>
+        <ToggleableTimerForm isOpen={false}/>
         <EditableTimer
           id={1}
           title={"Learn Archery"}
           project={"Archery"}
-          elapsed={"3890985"}
+          elapsed={123456}
           isRunning
         />
         <EditableTimer
-          id={1}
+          id={2}
           title={"Bake squash"}
           project={"Kitchen Chores"}
-          elapsed={"3890985"}
-          editFormOpen
+          isRunning
+          elapsed={363504}
         />
       </ScrollView>
     </View>

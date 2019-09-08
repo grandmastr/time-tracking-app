@@ -26,3 +26,7 @@ export const newTimer = (attrs = {}) => {
     project: attrs.timerProject || 'Project'
   };
 };
+
+export const removeTimer = (array, key) => {
+  return array.filter(timer => timer.id !== key);
+};

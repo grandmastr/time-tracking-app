@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
 
 // components
 import TimerForm from './TimerForm';
 import Timer from './Timer';
-import { millisecondsToHuman } from "../utils/TimerUtils";
 
 EditableTimer.propTypes = {
   id: PropTypes.string.isRequired,
@@ -13,21 +12,42 @@ EditableTimer.propTypes = {
   project: PropTypes.string.isRequired,
   elapsed: PropTypes.number,
   isRunning: PropTypes.bool,
-  editFormOpen: PropTypes.bool
+  editFormOpen: PropTypes.bool,
+  onTimerRemove: PropTypes.func.isRequired
 };
 
 EditableTimer.defaulltProps = {
   elapsed: 123455
 };
 
-export default function EditableTimer({id, title, project, elapsed, isRunning, editFormOpen, onTimerRemove, onFormSubmit}) {
-  const elapsedString = millisecondsToHuman(elapsed);
+export default function EditableTimer({id, title, project, elapsed, isRunning, onTimerRemove, onFormSubmit}) {
+  const [editFormOpen, setEditFormOpen] = useState(false);
+  
+  const handleSubmit = timer => {
+    onFormSubmit(timer);
+    
+    setEditFormOpen(false);
+  };
   
   return (
     <View>
-      {isRunning
-        ? (<Timer title={title} project={project} elapsed={elapsedString}/>)
-        : (<TimerForm id={id} title={title} project={project} onFormClose={onTimerRemove} onFormSubmit={onFormSubmit}/>)
+      {editFormOpen
+          ? (<TimerForm
+              id={id}
+              title={title}
+              project={project}
+              onFormSubmit={timer => handleSubmit(timer)}
+              onFormClose={() => setEditFormOpen(false)}
+          />)
+          : (<Timer
+              id={id}
+              title={title}
+              project={project}
+              elapsed={elapsed}
+              isRunning={isRunning}
+              onEditPress={() => setEditFormOpen(true)}
+              onRemovePress={() => onTimerRemove(id)}
+          />)
       }
     </View>
   );
